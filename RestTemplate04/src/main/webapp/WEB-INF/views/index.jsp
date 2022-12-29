@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>home</h1>
+	<h1>RestTemplate04</h1>
 	<%= new Date() %>
-	<a href="t1">링크1</a>
 </body>
 </html>

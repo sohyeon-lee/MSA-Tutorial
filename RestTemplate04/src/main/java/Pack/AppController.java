@@ -16,36 +16,32 @@ import lombok.ToString;
 /* ===================================================================
 	ex01
 ==================================================================== */
-/*
-@RestController
-@RequestMapping("/bpp1")
-class AppController {
-	@GetMapping("")
-	public String f1() {
-		return "호랑이";
-	}
-}
-*/
+//@RestController
+//@RequestMapping("/bpp1")
+//class AppController {
+//	@GetMapping("")
+//	public String f1() {
+//		return "호랑이";
+//	}
+//}
 
 /* ===================================================================
 	ex02
 ==================================================================== */
-/*
-@RestController
-@RequestMapping("/bpp2/{num}")
-public class AppController {
-
+//@RestController
+//@RequestMapping("/bpp2/{num}")
+//public class AppController {
+//
+////	@GetMapping("")
+////	public String f1(@PathVariable String num) {
+////		return "호랑이 : " + num;
+////	}
+//
 //	@GetMapping("")
-//	public String f1(@PathVariable String num) {
-//		return "호랑이 : " + num;
+//	public int f1(@PathVariable String num) {
+//		return 1234 ;
 //	}
-
-	@GetMapping("")
-	public int f1(@PathVariable String num) {
-		return 1234 ;
-	}
-}
-*/
+//}
 
 /* ===================================================================
 	ex03 - 객체
@@ -70,7 +66,6 @@ public class AppController {
 	}
 }
 */
-
 /* ===================================================================
 	ex04 - 배열
 ==================================================================== */
@@ -79,13 +74,13 @@ public class AppController {
 @RequestMapping("/bpp2/{num}")
 public class AppController {
 	
-// 	// 숫자 배열
+ 	// 숫자 배열
 //	@GetMapping("")
 //	public Integer[] f1(@PathVariable String num) {
 //		Integer[] arr = {10, 20, 30};
 //		return arr;
 //	}
-	
+
 //	// 문자열 배열
 //	@GetMapping("")
 //	public String[] f1(@PathVariable String num) {
@@ -161,7 +156,7 @@ class Person {
 //class AppController{
 //    @GetMapping("")
 //    public String f1() {
-//        System.out.println("bpp 2");
+//        System.out.println("bpp2");
 //        return "코끼리";
 //    }
 //}
@@ -227,25 +222,3 @@ class Person {
 //		return li;
 //	}
 //}
-
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-class Person {
-	String name;
-	int age;
-}
-
-@RestController
-@RequestMapping("/bpp2")
-class AppController{
-	@GetMapping("")
-	public LinkedList<Integer> f1() {
-		LinkedList<Integer> li = new LinkedList<>();
-		li.add(1000);
-		li.add(2000);
-		li.add(3000);
-		return li;
-	}
-}

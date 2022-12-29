@@ -5,10 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import reactor.core.publisher.Mono;
 
 /* ===================================================================
@@ -28,42 +24,40 @@ import reactor.core.publisher.Mono;
 //		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
 //		String str = restTemplate.getForObject("http://localhost:8082/bpp1", String.class); 
 //		
-//		return "app1 : " + str;
+//		return "app1 : " + str; // app1 : 호랑이
 //	}
 //}
 
 /* ===================================================================
 	ex02
 ==================================================================== */
-/*
-@RestController
-@RequestMapping("/app2/{num}")
-public class AppController {
-	
-	@Autowired
-	private RestTemplate restTemplate; // 빈으로 등록해줘야 한다. (main파일에서 빈 등록함)
-	
+//@RestController
+//@RequestMapping("/app2/{num}")
+//public class AppController {
+//	
+//	@Autowired
+//	private RestTemplate restTemplate; // 빈으로 등록해줘야 한다. (main파일에서 빈 등록함)
+//	
+////	@GetMapping("")
+////	public String f1(@PathVariable String num) {
+////		System.out.println("app2");
+////		
+////		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
+////		String str = restTemplate.getForObject("http://localhost:8082/bpp2/{num}", String.class, num+999); 
+////		
+////		return "[app2 : " + num + "] [" + str + "]"; // [app2 : 12] [호랑이 : 12999]
+////	}
+//
 //	@GetMapping("")
 //	public String f1(@PathVariable String num) {
 //		System.out.println("app2");
 //		
 //		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
-//		String str = restTemplate.getForObject("http://localhost:8082/bpp2/{num}", String.class, num+999); 
+//		Integer data =  restTemplate.getForObject("http://localhost:8082/bpp2/{num}", Integer.class, num+999); 
 //		
-//		return "[app2 : " + num + "] [" + str + "]";
+//		return "[app2 : " + num + "] [" + (data+1) + "]"; // [app2 : 12] [1235]
 //	}
-
-	@GetMapping("")
-	public String f1(@PathVariable String num) {
-		System.out.println("app2");
-		
-		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
-		Integer data =  restTemplate.getForObject("http://localhost:8082/bpp2/{num}", Integer.class, num+999); 
-		
-		return "[app2 : " + num + "] [" + (data+1) + "]";
-	}
-}
-*/
+//}
 
 /* ===================================================================
 	ex03 - 객체
@@ -92,11 +86,10 @@ public class AppController {
 		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
 		Person data =  restTemplate.getForObject("http://localhost:8082/bpp2/{num}", Person.class, num+999); 
 		
-		return "app : " + data.getName() + data.getAge();
+		return "app : " + data.getName() + data.getAge(); // app : 호랑이3333
 	}
 }
 */
-
 /* ===================================================================
 	ex04 - 배열
 ==================================================================== */
@@ -108,7 +101,7 @@ public class AppController {
 	@Autowired
 	private RestTemplate restTemplate; // 빈으로 등록해줘야 한다. (main파일에서 빈 등록함)
 	
-//	// 숫자 배열
+	// 숫자 배열
 //	@GetMapping("")
 //	public String f1(@PathVariable String num) {
 //		
@@ -118,7 +111,7 @@ public class AppController {
 //		for (Integer value : data) {
 //			result += (value+" ");
 //		}
-//		return "app : " + result;
+//		return "app : " + result; // app : 10 20 30 
 //	}
 
 //	// 문자열 배열
@@ -131,7 +124,7 @@ public class AppController {
 //		for (String value : data) {
 //			result += (value+" ");
 //		}
-//		return "app : " + result;
+//		return "app : " + result; // app : 사과 배 감
 //	}
 	
 //	// 객체 배열
@@ -140,10 +133,11 @@ public class AppController {
 //		
 //		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
 //		Person[] data =  restTemplate.getForObject("http://localhost:8082/bpp2/{num}", Person[].class, num+999);
-//		for (String value : data) {
-//			result += (value+" ");
+//		String result = "";
+//		for (Person value : data) {
+//			result += (value.getName() + " "+value.getAge() + " ");
 //		}
-//		return "app : ";
+//		return "app : " + result;
 //	}
 	
 //	// 컬렉션
@@ -166,11 +160,9 @@ public class AppController {
 //		// 다른 서비스를 하고 있는 서버에 요청을 보내고 데이터를 받는다.
 //		ResponseEntity<Person[]> data =  restTemplate.getForEntity("http://localhost:8082/bpp2/{num}", Person[].class, num+999); 
 //		
-//		Person person = new Person();
-//		for(int i=0; i<data.getBody().length; i++) {
-//			person.setName(data.getBody()[i].getName());
-//			person.setName(data.getBody()[i].getName());
-//			result += data.getBody()[i].getName() + " ";
+//		String result = "";
+//		for(Person value : data.getBody()) {
+//			result += value.getName() + " " + value.getAge() + " ";
 //		}
 //		return "app : " + result;
 //	}
@@ -185,7 +177,6 @@ class Person {
 	int age;
 }
 */
-
 /* ===================================================================
 	ex05 - 데이터 여러개 주고받기
 ==================================================================== */
@@ -210,29 +201,30 @@ class Person {
 /* ===================================================================
 	ex06 - WebClient (논블로킹의 사용)
 ==================================================================== */
-//@RestController
-//@RequestMapping("/app3")
-//public class AppController {
-//
-//	@GetMapping("")
-//	public Mono<String> f1() {
-//		WebClient client =  WebClient.create();
-//		
-//		// 논블로킹, 바로 return 시켜야 한다.
-////		Mono<String> m = client
-////							.get()
-////							.uri("http://localhost:8082/bpp2")
-////							.retrieve()
-////							.bodyToMono(String.class);
-//		
-//		return client
-//				.get()
-//				.uri("http://localhost:8082/bpp2")
-//				.retrieve()
-//				.bodyToMono(String.class);
-//	}
-//}
+/*
+@RestController
+@RequestMapping("/app3")
+public class AppController {
 
+	@GetMapping("")
+	public Mono<String> f1() {
+		WebClient client =  WebClient.create();
+		
+		// 논블로킹, 바로 return 시켜야 한다.
+//		Mono<String> m = client
+//							.get()
+//							.uri("http://localhost:8082/bpp2")
+//							.retrieve()
+//							.bodyToMono(String.class);
+		
+		return client
+				.get()
+				.uri("http://localhost:8082/bpp2")
+				.retrieve()
+				.bodyToMono(String.class);
+	}
+}
+*/
 /* ===================================================================
 	ex06 - WebClient (블로킹의 사용)
 ==================================================================== */
@@ -344,29 +336,3 @@ class Person {
 //		return null;
 //	}
 //}
-
-@RestController
-@RequestMapping("/app3")
-public class AppController {
-	
-	// 비동기 통신 코드 분리
-	public Mono<String> f2() {
-		WebClient client =  WebClient.create();
-		return client
-				.get()
-				.uri("http://localhost:8082/bpp2")
-				.retrieve()
-				.bodyToMono(String.class);
-	}
-	
-	@GetMapping("")
-	public String f1() {
-		Mono<String> result = f2();
-		result.subscribe((value)->{
-			System.out.println("나중 실행 ...");
-			System.out.println(value);
-		});
-		System.out.println("먼저 실행 ...");
-		return null;
-	}
-}
