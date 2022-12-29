@@ -1,0 +1,10 @@
+# view setting
+spring.mvc.view.prefix = /WEB-INF/views/
+spring.mvc.view.suffix = .jsp
+
+# server port
+server.port = 8080
+
+# rabbitmq
+spring.rabbitmq.host = localhost
+spring.rabbitmq.port = 5672

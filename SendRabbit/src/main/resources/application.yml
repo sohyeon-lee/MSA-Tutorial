@@ -1,0 +1,16 @@
+# server port
+server:
+  port: 8081
+
+spring:
+  # view setting
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  # rabbitmq 접속 정보
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
