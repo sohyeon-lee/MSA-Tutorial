@@ -8,3 +8,13 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+  # scale out된 consumer 중에서 task가 없는 서버에 요청을 보낸다.
+    # rabbitmq 접속 정보
+#    host: 192.168.0.183
+#    port: 5672
+#    username: tiger
+#    password: 1234
+    # 데이터 처리 완료 신호를 직접 보낸다.
+#    listener:
+#      simple:
+#        acknowledge-mode: manual

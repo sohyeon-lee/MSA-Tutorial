@@ -60,28 +60,13 @@ class RecvModule {
 	==================================================================== */
 //	@RabbitListener(queues = "hello") // RecvRabbitApplication 클래스에서 queue 빈 생성 필요
 //	public void tutoral01Receiver(String str) {
-//		try {Thread.sleep(5000);} catch (Exception e) {}
-//		System.out.println(str + "recv1");
-//	}
-	
-//	@RabbitListener(queues = "hello") // RecvRabbitApplication 클래스에서 queue 빈 생성 필요
-//	public void receive(String in, Channel channel, Message str) {
-//		try {Thread.sleep(5000);} catch (Exception e) {}
-//		System.out.println(in);
-//		long tag = str.getMessageProperties().getDeliveryTag();
-//		
-//		try {
-//			channel.basicAck(tag, false);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//		System.out.println(str + "recv1");
+//		System.out.println(str + "recv2");
 //	}
 	
 	/* ===================================================================
 		RabbitMQ - tutorial 3
 	==================================================================== */
-//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex01", type=ExchangeTypes.FANOUT), value= @Queue(name="que01")))
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex01",type=ExchangeTypes.FANOUT),value= @Queue(name="que02")))
 //	public void receiver(String msg) {
 //		System.out.println(msg);
 //	}
@@ -89,20 +74,41 @@ class RecvModule {
 	/* ===================================================================
 		RabbitMQ - tutorial 4
 	==================================================================== */
-//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex02",type=ExchangeTypes.DIRECT), value=@Queue(name="que01"), key="orange"))
-//	public void receiver_orange(String msg) {
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex02",type=ExchangeTypes.DIRECT), value=@Queue(name="que02"), key="black"))
+//	public void receiver_black(String msg) {
 //		System.out.println(msg);
 //	}
-
+//
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex02",type=ExchangeTypes.DIRECT), value=@Queue(name="que02"), key="green"))
+//	public void receiver_green(String msg) {
+//		System.out.println(msg);
+//	}
+//
+//	// 키를 한번에 쓸 수도 있다!
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex02",type=ExchangeTypes.DIRECT), value=@Queue(name="que02"), key={"black", "green"}))
+//	public void receiver_all(String msg) {
+//		System.out.println(msg);
+//	}
+	
 	/* ===================================================================
 		RabbitMQ - tutorial 5
+		잘 안될 경우 rabbitmq에서 바인딩 되어 있는 Routing Key를 확인한다.
+		이전에 바인딩 된 key가 저장되어 있을 수 있다.
 	==================================================================== */
-//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex03", type=ExchangeTypes.TOPIC), value = @Queue(name="que01"), key = "*.orange.*"))
+//	@RabbitListener(
+//		bindings = @QueueBinding(exchange = @Exchange(name="ex03",type=ExchangeTypes.TOPIC),
+//			value = @Queue(name="que02"),
+////			key={"*.*.*.rabbit", "lazy.#"}
+////			key="lazy.#"
+////			key="#.lazy"
+////			key="#.lazy.#"
+//			key="*.*.*"
+//		)
+//	)
 //	public void receiver(String msg) {
 //		System.out.println(msg);
 //	}
 }
-
 
 @Data
 @NoArgsConstructor
