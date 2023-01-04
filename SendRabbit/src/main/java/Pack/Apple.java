@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Apple {
 	@RequestMapping("/")
 	public String func00() {
-		System.out.println("Apple class Call");
+		//System.out.println("Apple class Call");
 		
 		return "index";
 	}
@@ -179,13 +179,43 @@ public class Apple {
 	==================================================================== */
 	@RequestMapping("/t8")
 	public String func8() {
-		System.out.println("func71 Call");
+		System.out.println("func8 Call");
 		String msg = "호랑이";
 		rabbitTemplate.convertAndSend(
 			"ex03",
 			"lazy.banana.elephant.show",
 			msg
 		);
+		return "redirect:/";
+	}
+
+	/* ===================================================================
+		RabbitMQ - tutorial 6(String)
+	==================================================================== */
+	int count3 = 0;
+	@RequestMapping("/t91")
+	public String func91() {
+		String sendMsg = "호랑이" + count3++;
+		String recvMsg = (String)rabbitTemplate.convertSendAndReceive(
+				"ex04",
+				"key01",
+				sendMsg
+				);
+		System.out.println("final result : " + recvMsg);
+		return "redirect:/";
+	}
+
+	/* ===================================================================
+		RabbitMQ - tutorial 6(Object)
+	==================================================================== */
+	@RequestMapping("/t92")
+	public String func92() {
+		Person msg = (Person)rabbitTemplate.convertSendAndReceive(
+				"ex04",
+				"key02",
+				new Person("독수리", 2000)
+				);
+		System.out.println("final result : " + msg.getName() + msg.getAge());
 		return "redirect:/";
 	}
 }

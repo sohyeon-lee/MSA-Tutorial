@@ -30,5 +30,7 @@
 
 	<!-- rabbitmq quickstart tutorial5 : Topics -->
 	<a href="t8">tutorial 5 - topic</a><br>
+	<a href="t91">tutorial 6 - RPC(String)</a><br>
+	<a href="t92">tutorial 6 - RPC(Object)</a><br>
 </body>
 </html>

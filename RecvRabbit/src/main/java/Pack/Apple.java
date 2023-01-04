@@ -97,9 +97,27 @@ class RecvModule {
 	/* ===================================================================
 		RabbitMQ - tutorial 5
 	==================================================================== */
-//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex03", type=ExchangeTypes.TOPIC), value = @Queue(name="que01"), key = "*.orange.*"))
-//	public void receiver(String msg) {
+	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex03", type=ExchangeTypes.TOPIC), value = @Queue(name="que01"), key = "*.orange.*"))
+	public void receiver(String msg) {
+		System.out.println(msg);
+	}
+
+	/* ===================================================================
+		RabbitMQ - tutorial 6(String)
+	==================================================================== */
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex04", type=ExchangeTypes.DIRECT), value = @Queue(name="que04"), key = "key01"))
+//	public String receiver(String msg) {
 //		System.out.println(msg);
+//		return msg + "RPC";
+//	}
+
+	/* ===================================================================
+		RabbitMQ - tutorial 6(Object)
+	==================================================================== */
+//	@RabbitListener(bindings = @QueueBinding(exchange = @Exchange(name="ex04", type=ExchangeTypes.DIRECT), value = @Queue(name="que04"), key = "key02"))
+//	public Person receiver(Person person) {
+//		System.out.println(person.toString());
+//		return new Person("앵무새", 3000);
 //	}
 }
 
