@@ -1,0 +1,16 @@
+# server port
+server:
+  port: 8081
+
+# view setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+# 코드에서 'tiger' 식별자를 사용하면
+# localhost:8083, localhost:8084 로 해석한다.
+tiger:
+  ribbon:
+    listOfServers: 192.168.0.219:8083, 192.168.0.219:8084
