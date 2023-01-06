@@ -1,0 +1,26 @@
+# server port
+server:
+  port: 8082
+
+# view setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  application:
+    name: Eureka02
+    
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://192.168.0.211:8761/eureka/
+    registryFetchIntervalSeconds: 5
