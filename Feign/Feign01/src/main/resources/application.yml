@@ -1,0 +1,20 @@
+# server port
+server:
+  port: 8081
+
+# view setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp  
+  application:
+    name: Feign0001
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    
+feign:
+  hystrix:
+    enabled: true
