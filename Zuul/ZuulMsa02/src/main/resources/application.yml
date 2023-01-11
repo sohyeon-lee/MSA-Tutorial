@@ -1,0 +1,19 @@
+# server port
+server:
+  port: 8082
+
+# view setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  application:
+    name: ZuulMsa02
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://192.168.0.211:8761/eureka/

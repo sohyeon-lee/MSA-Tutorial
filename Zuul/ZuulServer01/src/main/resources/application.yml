@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ZuulServer01
+
+server:
+  port: 8765 # Zuul 접근 포트
+  
+zuul:
+  routes:
+    ZUULMSA01: # 유레카 서버에 등록된 ZUULMSA01로 간다.
+      path: /app/** # localhost:8765/app 입력이 되면
+      # service-id: Service01
+      strip-prefix: false
+
+    ZUULMSA02: # 유레카 서버에 등록된 ZUULMSA02로 간다.
+      path: /bpp/** # localhost:8765/bpp 입력이 되면
+      # service-id: Service01
+      strip-prefix: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://192.168.0.211:8761/eureka/
+      
+#eureka:
+#  instance:
+#    non-secure-port: ${server.port}
+#    prefer-ip-address: true
+#    hostname: localhost
+#  client:
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
